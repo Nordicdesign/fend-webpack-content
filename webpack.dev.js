@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
   mode: 'development',
@@ -12,12 +12,20 @@ module.exports = {
     contentBase: './dist',
   },
   entry: './src/client/index.js',
+  // output: {
+  //   libraryTarget: 'var',
+  //   library: 'Client'
+  // },
   module: {
     rules: [
       {
-        test: '/\.js$/',
+        test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
@@ -36,6 +44,6 @@ module.exports = {
       cleanStaleWebpackAssets: true,
       protectWebpackAssets: false
     }),
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
   ]
 }

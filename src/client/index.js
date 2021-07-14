@@ -1,6 +1,11 @@
 import { handleSubmit } from './js/formHandler'
-import { checkForName } from './js/nameChecker'
+import './styles/base.scss'
 
-console.log(handleSubmit)
-console.log(checkForName)
-console.log("hi!")
+(function() {
+  document.getElementById('submit').addEventListener('click', handleSubmit)
+}())
+
+// export {
+//     checkForName,
+//     handleSubmit
+// }
